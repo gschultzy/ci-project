@@ -1,0 +1,15 @@
+# Uused for Cf deployment
+
+applications:
+- name: my-app
+  memory: 128M
+  instances: 1
+  random-route: true
+  command: node ./app/server.js
+
+  env:
+    NODE_ENV: production
+    OPTIMIZE_MEMORY: true
+
+
+   

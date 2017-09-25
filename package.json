@@ -1,0 +1,19 @@
+{
+  "name": "ci-project",
+  "version": "1.0.0",
+  "description": "Simple node app to test ci/cd",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "author": "greg schultz",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "request": "^2.82.0"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
