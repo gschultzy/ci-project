@@ -1,7 +1,7 @@
 # Uused for Cf deployment
 
 applications:
-- name: my-app
+- name: ci-project
   memory: 128M
   instances: 1
   random-route: true
