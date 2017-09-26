@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var converter = require("../lib/converter");
+var calculator = require("../lib/calculator");
 var serverPort = process.env.PORT || 3000; // process.env.PORT allows for PCF deployment
 
 app.get("/", function(req, res) {
@@ -12,7 +12,7 @@ app.get("/addition", function(req, res) {
   var a = parseInt(req.query.x);
   var b = parseInt(req.query.y);
 
-  var result = converter.addition(a, b);
+  var result = calculator.addition(a, b);
 
   res.send(result.toString());
 });
@@ -21,7 +21,7 @@ app.get("/subtraction", function(req, res) {
   var a = parseInt(req.query.x);
   var b = parseInt(req.query.y);
 
-  var result = converter.subtraction(a, b);
+  var result = calculator.subtraction(a, b);
 
   res.send(result.toString());
 });
