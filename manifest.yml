@@ -1,11 +1,11 @@
-# Uused for Cf deployment
+# Used for CF deployment
 
 applications:
 - name: ci-project
   memory: 128M
   instances: 1
   random-route: true
-  command: node ./app/server.js
+  command: node app/app/server.js
 
   env:
     NODE_ENV: production
