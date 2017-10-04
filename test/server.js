@@ -4,13 +4,24 @@ var expect  = require("chai").expect;
 // Request module used to send/recieve http requests
 var request = require("request");
 
+// Gather environment info
+var serverPort = process.env.PORT || 3000; // process.env.PORT used for cf deployment
+var VCAP_APPLICATION = JSON.parse(process.env.VCAP_APPLICATION); // get cf instance info
+var uri = VCAP_APPLICATION.uris[0] || 'localhost'; // the uri provided by cf else use localhost
 
+// Define the tests.
 describe("Addition and Subtraction Calculator API", function() {
 
   describe("Addition", function() {
 
-    var url = "http://localhost:3000/addition?x=1&y=2";
-
+    // Set url for testing
+    // If on cf don't use port number otherwise timeout errors in Mocha
+    if (process.env.VCAP_APPLICATION){
+      var url = "http://"+uri+"/addition?x=1&y=2";
+    } else {
+      var url = "http://"+uri+":"+serverPort+"/addition?x=1&y=2";
+    }
+    
     it("returns status 200", function(done) {
       request(url, function(error, response, body) {
         expect(response.statusCode).to.equal(200);
@@ -28,7 +39,14 @@ describe("Addition and Subtraction Calculator API", function() {
   });
 
   describe("Subtraction", function() {
-    var url = "http://localhost:3000/subtraction?x=6&y=1";
+
+    // Set url for testing
+    // If on cf don't use port number otherwise timeout errors in Mocha
+    if (process.env.VCAP_APPLICATION){
+      var url = "http://"+uri+"/subtraction?x=6&y=1";
+    } else {
+      var url = "http://"+uri+":"+serverPort+"/subtraction?x=6&y=1";
+    }
 
     it("returns status 200", function(done) {
       request(url, function(error, response, body) {
