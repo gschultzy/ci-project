@@ -57,8 +57,8 @@ describe("Addition and Subtraction Calculator API", function() {
 
     it("returns the subtraction result", function(done) {
       request(url, function(error, response, body) {
-        // expect(body).to.equal('5');
-        expect(body).to.equal('4'); // uncomment to inject a failure
+        expect(body).to.equal('5');
+        // expect(body).to.equal('4'); // uncomment to inject a failure
         done(); // done() required to make mocha wait for the response
       });
     });
